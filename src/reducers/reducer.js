@@ -16,9 +16,15 @@ const reducer = (state = initialState, action) => {
             }
         }
         case ('SWITCH_TIME'): {
+            let status = !state.isStopwatchActive
+
+            if (typeof action.payload === 'boolean'){
+                status = action.payload
+            }
+
             return {
                 ...state,
-                isStopwatchActive: !state.isStopwatchActive,
+                isStopwatchActive: status,
             }
 
         }

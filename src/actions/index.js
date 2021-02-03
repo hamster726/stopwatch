@@ -5,9 +5,10 @@ const updateTimer = (time) => {
     }
 }
 
-const switchTimer = () => {
+const switchTimer = (status) => {
     return {
         type: 'SWITCH_TIME',
+        payload: status
     }
 }
 
