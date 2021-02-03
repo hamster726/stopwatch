@@ -1,5 +1,4 @@
 const initialState = {
-    initialStopwatch: '00:00:00.00',
     stopwatchTime: '',
     isStopwatchActive: false,
 
@@ -25,13 +24,6 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isStopwatchActive: status,
-            }
-
-        }
-        case ('CLEAR_TIME'): {
-            return {
-                ...state,
-                stopwatchTime: state.initialStopwatch
             }
 
         }

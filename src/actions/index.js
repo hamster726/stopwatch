@@ -12,15 +12,7 @@ const switchTimer = (status) => {
     }
 }
 
-
-const clearTimer = () => {
-    return {
-        type: 'CLEAR_TIME',
-    }
-}
-
 export {
     updateTimer,
     switchTimer,
-    clearTimer
 }

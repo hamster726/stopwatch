@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {updateTimer, switchTimer, clearTimer} from "../../actions/";
+import {updateTimer, switchTimer} from "../../actions/";
 import {connect} from 'react-redux'
 
 
@@ -7,27 +7,22 @@ class Stopwatch extends Component {
 
     constructor(props) {
         super(props);
-        this.props.clearTimer()
+        this.initialStopwatch = '00:00:00.00';
+        this.props.updateTimer(this.initialStopwatch)
     }
 
     clocktimer = 0;
     startDate = new Date();
     timeAfterStart = 0;
+    delay = 16.6 // ms = 60fps/min
 
-
-    componentDidMount() {
-
-    }
-
-
-    Time = (timeAfterStart = 0) => {
+    Timer = (pauseTime) => {
         let ms, s, m, h = 0;
-        let renderedTime;
+        let renderedTimer;
 
         const restructure = (num) => {
-
             if (String(num).length > 2) {
-                return String(num).slice(0, 2);
+                return String(num).slice(0, 2); // поправить ms !
             }
 
             if (String(num).length === 1) {
@@ -37,55 +32,42 @@ class Stopwatch extends Component {
             return num;
         }
 
-        let time = new Date(new Date().getTime() - this.startDate.getTime());
+        const time = new Date(new Date().getTime() - this.startDate.getTime());
 
-        time.setTime(time.getTime() + timeAfterStart);
+        time.setTime(time.getTime() + pauseTime);
 
         ms = restructure(time.getMilliseconds());
-        s = restructure(time.getSeconds());
-        m = restructure(time.getMinutes());
-        h = restructure(time.getHours() - 3);
-
+        s  = restructure(time.getSeconds());
+        m  = restructure(time.getMinutes());
+        h  = restructure(time.getHours() - 3); //default 3 hours
 
         this.timeAfterStart = time.getTime()
 
-        renderedTime = `${h}:${m}:${s}.${ms}`
+        renderedTimer = `${h}:${m}:${s}.${ms}`
+        this.props.updateTimer(renderedTimer);
 
-        this.props.updateTimer(renderedTime);
-
-        if(this.props.isStopwatchActive) {
-            this.clocktimer = setTimeout(() => this.Time(timeAfterStart), 16.6); // 16.6 - 60fps/min
+        if (this.props.isStopwatchActive) {
+            this.clocktimer = setTimeout(() => this.Timer(pauseTime), this.delay);
         }
     }
 
-    startTime = () => {
+    startCounting = () => {
         if (this.props.isStopwatchActive) {
             clearTimeout(this.clocktimer)
             this.props.switchTimer();
-
         } else {
-
             this.startDate = new Date()
             this.props.switchTimer();
-            setTimeout(() => this.Time(this.timeAfterStart));
+            setTimeout(() => this.Timer(this.timeAfterStart));
         }
     }
 
     clearTime = () => {
         clearTimeout(this.clocktimer);
         this.props.switchTimer(false);
-        this.props.clearTimer();
+        this.props.updateTimer(this.initialStopwatch);
         this.timeAfterStart = 0;
     }
-
-
-
-
-
-
-
-
-
 
 
     render() {
@@ -102,7 +84,7 @@ class Stopwatch extends Component {
                     }}>clear
                     </button>
                     <button className='stopwatch__button-start' onClick={() => {
-                        this.startTime()
+                        this.startCounting()
                     }}>{this.props.isStopwatchActive ? 'wait' : 'go!'}
                     </button>
                 </div>
@@ -124,7 +106,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     updateTimer,
     switchTimer,
-    clearTimer
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stopwatch);
