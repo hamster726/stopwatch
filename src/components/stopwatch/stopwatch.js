@@ -22,7 +22,7 @@ class Stopwatch extends Component {
 
         const restructure = (num) => {
             if (String(num).length > 2) {
-                return String(num).slice(0, 2); // поправить ms !
+                return String(num).slice(0, 2);
             }
 
             if (String(num).length === 1) {
