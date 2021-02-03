@@ -36,7 +36,7 @@ class Stopwatch extends Component {
 
         time.setTime(time.getTime() + pauseTime);
 
-        ms = restructure(time.getMilliseconds());
+        ms = restructure(Math.floor(time.getMilliseconds()/10));
         s  = restructure(time.getSeconds());
         m  = restructure(time.getMinutes());
         h  = restructure(time.getHours() - 3); //default 3 hours
