@@ -1,10 +1,7 @@
-
 const initialState = {
-    popupSavedDate: null,
-    showPopup: false,
-    datePull: [],
-    shownDataInPopup: [0,1,0],
-    activePage: 0
+    initialStopwatch: '00:00:00.00',
+    stopwatchTime: '',
+    isStopwatchActive: false,
 
 }
 
@@ -12,35 +9,28 @@ const initialState = {
 const reducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case ('SHOW_POPUP') : {
-            return{
-                ...state,
-                showPopup: action.payload
-            }
-        }
-        case ('ADD_CHOSEN_DATA'): {
-
-            const pull = state.datePull;
-            pull.push(action.payload)
-
+        case ('UPDATE_TIME') : {
             return {
                 ...state,
-                datePull: pull,
-                shownDataInPopup: [action.payload.getMonth(), action.payload.getDate(), action.payload.getDay()]
+                stopwatchTime: action.payload
+            }
+        }
+        case ('SWITCH_TIME'): {
+            return {
+                ...state,
+                isStopwatchActive: !state.isStopwatchActive,
             }
 
         }
-        case('SET_ACTIVE_PAGE'): {
+        case ('CLEAR_TIME'): {
             return {
-
                 ...state,
-                activePage: action.payload
+                stopwatchTime: state.initialStopwatch
             }
+
         }
         default:
             return state;
-
-
     }
 }
 

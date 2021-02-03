@@ -1,26 +1,25 @@
-const showPopup = (bool) => {
+const updateTimer = (time) => {
     return {
-        type: 'SHOW_POPUP',
-        payload: bool
+        type: 'UPDATE_TIME',
+        payload: time
     }
 }
 
-const addChosenData = (data) => {
+const switchTimer = () => {
     return {
-        type: 'ADD_CHOSEN_DATA',
-        payload: data
+        type: 'SWITCH_TIME',
     }
 }
 
-const setActivePage = (pageNum) => {
+
+const clearTimer = () => {
     return {
-        type: 'SET_ACTIVE_PAGE',
-        payload: pageNum
+        type: 'CLEAR_TIME',
     }
 }
 
 export {
-    showPopup,
-    addChosenData,
-    setActivePage
+    updateTimer,
+    switchTimer,
+    clearTimer
 }

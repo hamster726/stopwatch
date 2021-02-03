@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  height: 10px;
+  min-height: 50px;
+  background-color: #ffffff99;
+  &__menu {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    height: 100%;
+    max-width: 500px;
+    li {
+      border-right: 1px solid #00FFFF;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      a {
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__developer {
+    margin-left: auto;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding:0 20px;
+    transition: 0.3s all;
+    &:hover {
+      color: deeppink;
+    }
+  }
+}
