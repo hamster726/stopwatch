@@ -4,6 +4,9 @@ import {connect} from "react-redux";
 
 const App = (props) => {
 
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+
     console.log(props)
     const secondHandRotate = {
         transform: `rotate(${props.seconds*6}deg) translateX(-50%)`,
