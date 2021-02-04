@@ -14,6 +14,7 @@
     max-width: 500px;
     li {
       border-right: 1px solid $secondary-color;
+      min-width: 100px;
       display: flex;
       justify-content: center;
       align-items: stretch;
