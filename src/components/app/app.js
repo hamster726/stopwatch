@@ -1,10 +1,31 @@
 import React from 'react';
 import StopWatch from '../stopwatch/stopwatch'
-const App = () => {
+import {connect} from "react-redux";
+
+const App = (props) => {
+
+    console.log(props)
+    const secondHandRotate = {
+        transform: `rotate(${props.seconds*6}deg) translateX(-50%)`,
+        transition: '0.1s all linear'
+    }
+
+    const minuteHandRotate = {
+        transform: `rotate(${props.minutes*6}deg) translateX(-50%)`,
+        transition: '0.1s all linear'
+    }
 
     return (<>
-        <section className='container mainPage'>
+        <section className='container main-page'>
 
+            <div className="analog_stopwatch">
+                <div className="analog_stopwatch__black-circle"/>
+                <div className="analog_stopwatch__red-circle"/>
+                <div className="analog_stopwatch__second-hand" style={secondHandRotate}/>
+                <div className="analog_stopwatch__minute-hand" style={minuteHandRotate}/>
+
+
+            </div>
             <h1 className='title'>Stopwatch</h1>
             <StopWatch/>
         </section>
@@ -27,4 +48,11 @@ const App = () => {
 
 }
 
-export default App
+const mapStateToProps = (state) => {
+    return {
+        seconds: state.secondHand,
+        minutes: state.minuteHand,
+    }
+};
+
+export default connect(mapStateToProps)(App);
