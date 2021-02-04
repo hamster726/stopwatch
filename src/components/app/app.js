@@ -3,25 +3,26 @@ import StopWatch from '../stopwatch/stopwatch'
 const App = () => {
 
     return (<>
-        <header className='header'>
-            <ul className='header__menu'>
-                <li>
-                    <a href='#'>GitHub</a>
-                </li>
-                <li>
-                    <a href='#'>Portfolio</a>
-                </li>
-                <li>
-                    <a href='#'>Instagram</a>
-                </li>
-            </ul>
-            <div className="header__developer">by Hamster726</div>
-        </header>
         <section className='container mainPage'>
 
             <h1 className='title'>Stopwatch</h1>
             <StopWatch/>
         </section>
+
+        <footer className='footer'>
+            <ul className='footer__menu'>
+                <li>
+                    <a href='https://github.com/hamster726' target='_blank' rel='noreferrer'>GitHub</a>
+                </li>
+                <li>
+                    <a href='https://yesha.com.ua/' target='_blank' rel='noreferrer'>Portfolio</a>
+                </li>
+                <li>
+                    <a href='https://www.instagram.com/hamster726/' target='_blank' rel='noreferrer'>Instagram</a>
+                </li>
+            </ul>
+            <div className="footer__developer">by Hamster726</div>
+        </footer>
     </>)
 
 }
