@@ -1,5 +1,5 @@
-@media screen and (max-width: 650px){
-  
+@media screen and (max-width: 650px) {
+
   #root {
     height: calc(var(--vh, 1vh) * 100);
   }
@@ -20,9 +20,11 @@
       display: none;
 
     }
+
     &__menu {
       width: 100%;
       justify-content: space-around;
+
       li {
         border-right: none;
       }

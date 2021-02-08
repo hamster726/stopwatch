@@ -6,12 +6,14 @@
   background-color: #ffffff99;
   position: absolute;
   bottom: 0;
+
   &__menu {
     display: flex;
     list-style-type: none;
     padding: 0;
     height: 100%;
     max-width: 500px;
+
     li {
       border-right: 1px solid $secondary-color;
       min-width: 100px;
@@ -19,9 +21,11 @@
       justify-content: center;
       align-items: stretch;
       transition: .1s all;
+
       &:hover {
         background-color: $secondary-color;
       }
+
       a {
         display: flex;
         align-items: center;
@@ -38,8 +42,9 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding:0 20px;
+    padding: 0 20px;
     transition: 0.2s all;
+
     &:hover {
       color: #fec310;
     }

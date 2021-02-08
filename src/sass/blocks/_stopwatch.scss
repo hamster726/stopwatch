@@ -10,6 +10,7 @@
   background-color: #fff;
   box-shadow: 0 30px 60px 0 rgba(90, 116, 148, 40%);
   border-radius: 10px;
+
   &__form {
     margin-top: 20px;
 
@@ -46,9 +47,11 @@
     color: white;
     transition: 0.2s ease all;
     box-shadow: 0 4px 30px -6px rgba(36, 52, 70, 65%);
+
     &:hover {
       transform: translateY(-3px);
     }
+
     &:focus {
 
       outline: none;
@@ -59,6 +62,7 @@
     background-color: #ffc107;
     color: #343a40;
   }
+
   &__button-start {
     background-color: #28a745;
   }
