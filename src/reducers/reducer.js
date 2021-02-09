@@ -1,5 +1,5 @@
 const initialState = {
-  stopwatchTime: "",
+  stopwatchTime: "00:00:00.00",
   isStopwatchActive: false,
   minuteHand: 0,
   secondHand: 0,
@@ -35,7 +35,6 @@ const reducer = (state = initialState, action) => {
     }
     case "SWITCH_TIME": {
       let status = !state.isStopwatchActive;
-
       if (typeof action.payload === "boolean") {
         status = action.payload;
       }
